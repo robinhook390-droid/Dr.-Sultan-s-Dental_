@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Sultan's Dental & Implant Clinic | Madhu Vihar, Delhi</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mint:    #00b894;
+    --mint2:   #00d2a8;
+    --mint-pale: #e8faf6;
+    --mint-soft: #c8f2ea;
+    --sky:     #e0f4ff;
+    --blue:    #4a9ebe;
+    --coral:   #ff6b6b;
+    --dark:    #1a2e2b;
+    --text:    #2d3f3c;
+    --muted:   #6b8884;
+    --white:   #ffffff;
+    --off:     #f7fcfb;
+    --border:  #d4ede9;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Sora', sans-serif; color:var(--text); background:var(--white); overflow-x:hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position:fixed; top:0; width:100%; z-index:100;
+    background:rgba(255,255,255,0.92); backdrop-filter:blur(20px);
+    height:68px; display:flex; align-items:center; justify-content:space-between;
+    padding:0 6%; border-bottom:1px solid var(--border);
+    box-shadow:0 2px 20px rgba(0,184,148,0.06);
+  }
+  .logo { display:flex; align-items:center; gap:0.75rem; }
+  .logo-icon {
+    width:38px; height:38px; border-radius:10px;
+    background:linear-gradient(135deg, var(--mint) 0%, var(--mint2) 100%);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem; box-shadow:0 4px 12px rgba(0,184,148,0.3);
+  }
+  .logo-text { font-size:1rem; font-weight:700; color:var(--dark); line-height:1.1; }
+  .logo-text span { display:block; font-size:0.58rem; font-weight:400; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-top:2px; }
+  .nav-links { display:flex; gap:2rem; list-style:none; }
+  .nav-links a { color:var(--muted); text-decoration:none; font-size:0.85rem; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--mint); }
+  .nav-cta {
+    background:var(--mint); color:#fff;
+    padding:0.55rem 1.4rem; border-radius:50px;
+    font-size:0.78rem; font-weight:600; letter-spacing:0.05em;
+    text-decoration:none; transition:all 0.2s;
+    box-shadow:0 4px 14px rgba(0,184,148,0.35);
+  }
+  .nav-cta:hover { background:var(--mint2); transform:translateY(-1px); box-shadow:0 6px 20px rgba(0,184,148,0.45); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height:100vh; background:var(--off);
+    display:grid; grid-template-columns:1fr 1fr;
+    align-items:center; padding:110px 6% 80px;
+    position:relative; overflow:hidden;
+  }
+  /* decorative blobs */
+  .blob1 {
+    position:absolute; top:-100px; right:-80px;
+    width:500px; height:500px; border-radius:50%;
+    background:radial-gradient(circle, rgba(0,184,148,0.12) 0%, transparent 70%);
+    animation:float 8s ease-in-out infinite;
+  }
+  .blob2 {
+    position:absolute; bottom:-120px; left:-60px;
+    width:400px; height:400px; border-radius:50%;
+    background:radial-gradient(circle, rgba(74,158,190,0.1) 0%, transparent 70%);
+    animation:float 10s 3s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+
+  .hero-content { position:relative; z-index:1; }
+
+  .rating-chip {
+    display:inline-flex; align-items:center; gap:0.5rem;
+    background:#fff; border:1px solid var(--border);
+    padding:0.4rem 1rem; border-radius:50px; margin-bottom:1.8rem;
+    box-shadow:0 2px 12px rgba(0,0,0,0.06);
+    animation:slideIn 0.6s ease both;
+  }
+  .rating-chip .stars { color:#f5b731; font-size:0.85rem; }
+  .rating-chip span { font-size:0.78rem; font-weight:600; color:var(--text); }
+  .rating-chip .badge { background:var(--mint-pale); color:var(--mint); font-size:0.68rem; font-weight:700; padding:0.15rem 0.5rem; border-radius:50px; }
+
+  .hero h1 {
+    font-family:'Lora', serif;
+    font-size:clamp(2.8rem,5vw,4.6rem);
+    line-height:1.1; font-weight:600; color:var(--dark);
+    margin-bottom:1.4rem;
+    animation:slideIn 0.6s 0.1s ease both;
+  }
+  .hero h1 .accent { color:var(--mint); font-style:italic; }
+  .hero h1 .underline-text {
+    position:relative; display:inline-block;
+  }
+  .hero h1 .underline-text::after {
+    content:''; position:absolute; bottom:-4px; left:0;
+    width:100%; height:3px; border-radius:2px;
+    background:linear-gradient(90deg, var(--mint), var(--mint2));
+  }
+
+  .hero-sub {
+    font-family:'Lora',serif; font-style:italic;
+    color:var(--muted); font-size:1rem; margin-bottom:1.2rem;
+    animation:slideIn 0.6s 0.15s ease both;
+  }
+  .hero p {
+    color:var(--muted); font-size:0.95rem; line-height:1.8;
+    max-width:480px; margin-bottom:2.5rem;
+    animation:slideIn 0.6s 0.2s ease both;
+  }
+
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; animation:slideIn 0.6s 0.3s ease both; }
+  .btn-fill {
+    background:var(--mint); color:#fff;
+    padding:0.85rem 2rem; border-radius:50px;
+    font-weight:600; font-size:0.9rem; text-decoration:none;
+    box-shadow:0 6px 20px rgba(0,184,148,0.35);
+    transition:all 0.2s;
+  }
+  .btn-fill:hover { background:var(--mint2); transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,184,148,0.45); }
+  .btn-line {
+    border:2px solid var(--border); color:var(--text);
+    padding:0.85rem 2rem; border-radius:50px;
+    font-weight:600; font-size:0.9rem; text-decoration:none;
+    transition:all 0.2s; background:#fff;
+  }
+  .btn-line:hover { border-color:var(--mint); color:var(--mint); }
+
+  .hero-stats {
+    display:flex; gap:2rem; margin-top:3rem;
+    padding-top:2rem; border-top:2px dashed var(--border);
+    animation:slideIn 0.6s 0.4s ease both; flex-wrap:wrap;
+  }
+  .hstat { text-align:center; }
+  .hstat .n { font-size:2rem; font-weight:800; color:var(--mint); line-height:1; }
+  .hstat .l { font-size:0.68rem; font-weight:500; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; margin-top:4px; }
+
+  /* hero right */
+  .hero-right { position:relative; z-index:1; display:flex; align-items:center; justify-content:center; animation:slideIn 0.6s 0.2s ease both; }
+  .hero-card {
+    background:#fff; border-radius:20px;
+    padding:2rem; width:320px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.08), 0 4px 20px rgba(0,184,148,0.08);
+    border:1px solid var(--border);
+  }
+  .hc-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem; }
+  .hc-score { }
+  .hc-num { font-size:3rem; font-weight:800; color:var(--dark); line-height:1; }
+  .hc-stars { color:#f5b731; font-size:1rem; margin-top:2px; }
+  .hc-count { color:var(--muted); font-size:0.75rem; margin-top:2px; }
+  .hc-badge {
+    background:var(--mint-pale); border:1px solid var(--mint-soft);
+    color:var(--mint); font-size:0.68rem; font-weight:700;
+    padding:0.3rem 0.7rem; border-radius:50px; letter-spacing:0.06em;
+    text-transform:uppercase; white-space:nowrap;
+  }
+  .hc-divider { height:1px; background:var(--border); margin:1.2rem 0; }
+  .hc-row { display:flex; align-items:flex-start; gap:0.7rem; padding:0.45rem 0; }
+  .hc-icon {
+    width:32px; height:32px; border-radius:8px;
+    background:var(--mint-pale); color:var(--mint);
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.95rem; flex-shrink:0;
+  }
+  .hc-row-text { font-size:0.82rem; color:var(--text); line-height:1.45; }
+  .hc-row-sub { font-size:0.72rem; color:var(--muted); margin-top:1px; }
+  .hc-open {
+    margin-top:1.3rem; background:linear-gradient(135deg, var(--mint-pale) 0%, #d4f5ee 100%);
+    border:1px solid var(--mint-soft); border-radius:10px;
+    padding:0.75rem 1rem; display:flex; align-items:center; gap:0.6rem;
+  }
+  .hc-open-dot { width:8px; height:8px; border-radius:50%; background:#00b894; animation:pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,184,148,0.4)} 50%{box-shadow:0 0 0 6px rgba(0,184,148,0)} }
+  .hc-open span { font-size:0.82rem; font-weight:600; color:var(--mint); }
+  .hc-open small { font-size:0.72rem; color:var(--muted); display:block; }
+
+  @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── KEYWORD STRIP ── */
+  .kstrip {
+    background:#fff; border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+    padding:1rem 6%; display:flex; align-items:center; justify-content:center; gap:0; flex-wrap:wrap; overflow:hidden;
+  }
+  .ks-item {
+    display:flex; align-items:center; gap:0.5rem;
+    padding:0.5rem 1.5rem; font-size:0.8rem; font-weight:600; color:var(--muted);
+  }
+  .ks-item .n { font-size:1.1rem; font-weight:800; color:var(--mint); }
+  .ks-sep { color:var(--border); font-size:1.2rem; }
+
+  /* ── SHARED ── */
+  section { padding:6rem 6%; }
+  .slbl { font-size:0.68rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--mint); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem; }
+  .slbl::before { content:''; width:20px; height:2px; background:var(--mint); border-radius:2px; display:inline-block; }
+  .stitle { font-family:'Lora',serif; font-size:clamp(2rem,3.5vw,2.8rem); font-weight:600; line-height:1.2; color:var(--dark); margin-bottom:0.8rem; }
+  .sdesc { color:var(--muted); font-size:0.95rem; line-height:1.8; max-width:500px; }
+
+  /* ── ABOUT ── */
+  .about { background:var(--off); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+  .about-visual { position:relative; }
+  .av-main {
+    background:linear-gradient(145deg, var(--mint) 0%, #00c9a7 100%);
+    border-radius:24px; padding:3rem 2.5rem;
+    text-align:center; box-shadow:0 20px 60px rgba(0,184,148,0.25);
+  }
+  .av-main .big-icon { font-size:5rem; margin-bottom:1rem; filter:drop-shadow(0 4px 12px rgba(0,0,0,0.15)); }
+  .av-main h3 { font-family:'Lora',serif; color:#fff; font-size:1.8rem; font-weight:600; margin-bottom:0.4rem; }
+  .av-main p { color:rgba(255,255,255,0.8); font-size:0.85rem; font-style:italic; }
+  .av-float {
+    position:absolute; bottom:-20px; right:-20px;
+    background:#fff; border-radius:16px; padding:1.2rem 1.5rem;
+    box-shadow:0 10px 40px rgba(0,0,0,0.1); border:1px solid var(--border);
+    min-width:170px;
+  }
+  .av-float .af-num { font-size:2.2rem; font-weight:800; color:var(--mint); line-height:1; }
+  .av-float .af-lbl { font-size:0.7rem; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px; }
+  .av-chip {
+    position:absolute; top:-15px; left:20px;
+    background:var(--dark); color:#fff;
+    font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+    padding:0.4rem 1rem; border-radius:50px;
+  }
+
+  .about-body { display:flex; flex-direction:column; gap:1.4rem; }
+  .about-body p { color:var(--muted); line-height:1.85; font-size:0.93rem; }
+  .about-callout {
+    background:var(--mint-pale); border-radius:12px;
+    padding:1.2rem 1.5rem; border-left:4px solid var(--mint);
+  }
+  .about-callout p { color:var(--dark); font-style:italic; font-weight:500; font-size:0.9rem; line-height:1.65; margin:0; }
+  .about-callout cite { display:block; font-size:0.75rem; color:var(--muted); font-style:normal; margin-top:0.4rem; }
+  .feature-pills { display:flex; flex-wrap:wrap; gap:0.5rem; }
+  .fpill {
+    display:flex; align-items:center; gap:0.4rem;
+    background:#fff; border:1px solid var(--border);
+    padding:0.4rem 0.9rem; border-radius:50px;
+    font-size:0.78rem; font-weight:500; color:var(--text);
+    box-shadow:0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  /* ── SERVICES ── */
+  .services { background:#fff; }
+  .svc-header { display:grid; grid-template-columns:1fr auto; align-items:end; gap:2rem; margin-bottom:3rem; }
+  .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+  .svc-card {
+    background:var(--off); border:1.5px solid var(--border);
+    border-radius:16px; padding:1.8rem;
+    transition:all 0.25s; cursor:default; position:relative;
+  }
+  .svc-card:hover {
+    background:#fff; border-color:var(--mint);
+    transform:translateY(-5px);
+    box-shadow:0 16px 40px rgba(0,184,148,0.12);
+  }
+  .svc-icon-wrap {
+    width:52px; height:52px; border-radius:14px;
+    background:var(--mint-pale); display:flex; align-items:center;
+    justify-content:center; font-size:1.5rem; margin-bottom:1.1rem;
+    transition:background 0.2s;
+  }
+  .svc-card:hover .svc-icon-wrap { background:var(--mint-soft); }
+  .svc-card h3 { font-size:0.95rem; font-weight:700; color:var(--dark); margin-bottom:0.4rem; }
+  .svc-card p { color:var(--muted); font-size:0.81rem; line-height:1.65; }
+  .svc-tag { display:inline-block; margin-top:1rem; font-size:0.66rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--mint); }
+  .svc-hot {
+    position:absolute; top:16px; right:16px;
+    background:var(--coral); color:#fff;
+    font-size:0.6rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.15rem 0.5rem; border-radius:50px;
+  }
+
+  /* ── REVIEWS ── */
+  .reviews { background:var(--off); }
+  .rev-top { display:grid; grid-template-columns:1fr 2fr; gap:4rem; align-items:center; margin-bottom:3rem; }
+  .rev-score-box {
+    background:linear-gradient(145deg, var(--mint) 0%, #00c9a7 100%);
+    border-radius:20px; padding:2.5rem; text-align:center;
+    box-shadow:0 12px 40px rgba(0,184,148,0.25);
+  }
+  .rsb-num { font-size:5rem; font-weight:800; color:#fff; line-height:1; }
+  .rsb-stars { color:rgba(255,255,255,0.9); font-size:1.4rem; letter-spacing:0.1em; margin:0.4rem 0; }
+  .rsb-count { color:rgba(255,255,255,0.75); font-size:0.82rem; }
+  .rev-chips-area h4 { font-size:0.78rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem; }
+  .rev-chips { display:flex; flex-wrap:wrap; gap:0.5rem; }
+  .rchip {
+    background:#fff; border:1.5px solid var(--border);
+    border-radius:50px; padding:0.35rem 0.9rem;
+    font-size:0.78rem; font-weight:600; color:var(--text);
+    display:flex; align-items:center; gap:0.4rem;
+  }
+  .rchip .rc-n { background:var(--mint); color:#fff; font-size:0.65rem; font-weight:800; padding:0.1rem 0.4rem; border-radius:50px; }
+  .rev-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+  .rev-card {
+    background:#fff; border:1.5px solid var(--border);
+    border-radius:16px; padding:1.6rem; transition:all 0.2s;
+  }
+  .rev-card:hover { border-color:var(--mint); box-shadow:0 8px 30px rgba(0,184,148,0.08); }
+  .rc-stars { color:#f5b731; font-size:0.9rem; margin-bottom:0.9rem; }
+  .rc-text { color:var(--muted); font-size:0.85rem; line-height:1.7; font-style:italic; margin-bottom:1.1rem; }
+  .rc-name { font-weight:700; font-size:0.83rem; color:var(--dark); }
+  .rc-svc { font-size:0.72rem; color:var(--muted); margin-top:0.2rem; }
+
+  /* ── WHY ── */
+  .why { background:#fff; }
+  .why-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-top:3rem; }
+  .why-card {
+    background:var(--off); border:1.5px solid var(--border);
+    border-radius:16px; padding:1.8rem 1.4rem; text-align:center;
+    transition:all 0.2s;
+  }
+  .why-card:hover { border-color:var(--mint); transform:translateY(-4px); box-shadow:0 10px 30px rgba(0,184,148,0.1); }
+  .wc-icon {
+    width:56px; height:56px; border-radius:16px;
+    background:var(--mint-pale); margin:0 auto 1rem;
+    display:flex; align-items:center; justify-content:center; font-size:1.6rem;
+  }
+  .why-card h3 { font-size:0.9rem; font-weight:700; color:var(--dark); margin-bottom:0.4rem; }
+  .why-card p { color:var(--muted); font-size:0.79rem; line-height:1.65; }
+
+  /* ── CONTACT ── */
+  .contact { background:var(--off); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:5rem; margin-top:3.5rem; align-items:start; }
+  .cinfo { display:flex; flex-direction:column; gap:1.5rem; }
+  .ci-card {
+    background:#fff; border:1.5px solid var(--border); border-radius:16px;
+    padding:1.3rem 1.5rem; display:flex; gap:1rem; align-items:flex-start;
+    transition:border-color 0.2s;
+  }
+  .ci-card:hover { border-color:var(--mint); }
+  .ci-icon {
+    width:44px; height:44px; border-radius:12px; flex-shrink:0;
+    background:var(--mint-pale); color:var(--mint);
+    display:flex; align-items:center; justify-content:center; font-size:1.2rem;
+  }
+  .ci-card h4 { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.09em; color:var(--muted); margin-bottom:0.25rem; }
+  .ci-card p, .ci-card a { color:var(--text); font-size:0.88rem; line-height:1.6; text-decoration:none; font-weight:500; }
+  .ci-card a:hover { color:var(--mint); }
+  .open-pill {
+    display:inline-flex; align-items:center; gap:0.4rem;
+    background:#e8faf1; border:1px solid #a8e6c8;
+    color:#1a9954; font-size:0.75rem; font-weight:700;
+    padding:0.25rem 0.75rem; border-radius:50px; margin-top:0.3rem;
+  }
+  .odot { width:6px; height:6px; border-radius:50%; background:#1a9954; animation:pulse 1.5s infinite; }
+
+  .cform {
+    background:#fff; border-radius:20px; padding:2.5rem;
+    border:1.5px solid var(--border);
+    box-shadow:0 10px 40px rgba(0,0,0,0.05);
+  }
+  .cform h3 { font-family:'Lora',serif; font-size:1.6rem; color:var(--dark); margin-bottom:0.4rem; font-weight:600; }
+  .cform .sub { color:var(--muted); font-size:0.85rem; margin-bottom:1.8rem; }
+  .fg { margin-bottom:1.1rem; }
+  .fg label { display:block; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--muted); margin-bottom:0.38rem; }
+  .fg input, .fg select, .fg textarea {
+    width:100%; padding:0.75rem 1.1rem;
+    border:1.5px solid var(--border); border-radius:10px;
+    background:var(--off); color:var(--text);
+    font-family:'Sora',sans-serif; font-size:0.88rem;
+    outline:none; transition:border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  .fg input:focus, .fg select:focus, .fg textarea:focus {
+    border-color:var(--mint); background:#fff;
+    box-shadow:0 0 0 4px rgba(0,184,148,0.08);
+  }
+  .fg textarea { min-height:90px; resize:vertical; }
+  .fg-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .csub {
+    width:100%; background:linear-gradient(135deg, var(--mint) 0%, var(--mint2) 100%);
+    color:#fff; padding:0.95rem; border:none; border-radius:50px;
+    font-family:'Sora',sans-serif; font-size:0.9rem; font-weight:700;
+    letter-spacing:0.04em; cursor:pointer; margin-top:0.5rem;
+    transition:all 0.2s;
+    box-shadow:0 6px 20px rgba(0,184,148,0.35);
+  }
+  .csub:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,184,148,0.45); }
+
+  /* ── FOOTER ── */
+  footer {
+    background:var(--dark); padding:4rem 6% 1.5rem;
+  }
+  .foot-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:4rem; margin-bottom:3rem; }
+  .foot-logo { display:flex; align-items:center; gap:0.7rem; margin-bottom:1rem; }
+  .foot-logo-icon {
+    width:36px; height:36px; border-radius:10px;
+    background:linear-gradient(135deg, var(--mint) 0%, var(--mint2) 100%);
+    display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+  }
+  .foot-logo-text { color:#fff; font-size:0.95rem; font-weight:700; }
+  .foot-brand p { color:rgba(255,255,255,0.4); font-size:0.83rem; line-height:1.75; max-width:250px; }
+  .foot-col h4 { color:var(--mint); font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:1.2rem; }
+  .foot-col ul { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+  .foot-col ul li a { color:rgba(255,255,255,0.45); font-size:0.83rem; text-decoration:none; transition:color 0.2s; }
+  .foot-col ul li a:hover { color:#fff; }
+  .foot-bottom {
+    border-top:1px solid rgba(255,255,255,0.08); padding-top:1.5rem;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;
+  }
+  .foot-bottom p { color:rgba(255,255,255,0.25); font-size:0.73rem; }
+  .foot-tagline { font-family:'Lora',serif; font-style:italic; color:var(--mint); font-size:0.85rem; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:960px) {
+    .hero { grid-template-columns:1fr; }
+    .hero-right { display:none; }
+    .about-grid,.contact-grid { grid-template-columns:1fr; gap:2.5rem; }
+    .svc-header { grid-template-columns:1fr; }
+    .svc-grid { grid-template-columns:1fr 1fr; }
+    .why-grid { grid-template-columns:1fr 1fr; }
+    .rev-top { grid-template-columns:1fr; }
+    .rev-grid { grid-template-columns:1fr 1fr; }
+    .foot-grid { grid-template-columns:1fr 1fr; }
+    .nav-links { display:none; }
+  }
+  @media(max-width:600px) {
+    .svc-grid,.why-grid,.rev-grid { grid-template-columns:1fr; }
+    .fg-row { grid-template-columns:1fr; }
+    section { padding:4rem 5%; }
+    .kstrip { gap:0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🦷</div>
+    <div class="logo-text">Dr. Sultan's Dental<span>Madhu Vihar · Delhi · Prosthodontist</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book Appointment</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="blob1"></div>
+  <div class="blob2"></div>
+  <div class="hero-content">
+    <div class="rating-chip">
+      <span class="stars">★★★★★</span>
+      <span>4.9 · 618 Reviews</span>
+      <span class="badge">Prosthodontist</span>
+    </div>
+    <h1>Your <span class="accent">Smile</span>,<br>Our <span class="underline-text">Pride</span></h1>
+    <p class="hero-sub">"Your Smile Our Pride" — Dr. Sultan's Dental & Implant Clinic</p>
+    <p>Delhi's most trusted prosthodontist clinic at Madhu Vihar, I.P. Extension. Rated 4.9★ by 618+ patients for painless RCT, implants, wisdom tooth removal, and complete dental care. Open till 9 PM.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-fill">Book Appointment</a>
+      <a href="tel:08930033" class="btn-line">📞 Call Now</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="n">4.9★</div><div class="l">Google Rating</div></div>
+      <div class="hstat"><div class="n">618+</div><div class="l">Reviews</div></div>
+      <div class="hstat"><div class="n">9 PM</div><div class="l">Closing Time</div></div>
+      <div class="hstat"><div class="n">WhatsApp</div><div class="l">Available</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hc-top">
+        <div class="hc-score">
+          <div class="hc-num">4.9</div>
+          <div class="hc-stars">★★★★★</div>
+          <div class="hc-count">618 Google reviews</div>
+        </div>
+        <div class="hc-badge">Top Rated</div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📍</div>
+        <div>
+          <div class="hc-row-text">A-88, Madhu Vihar Market, I.P. Extension</div>
+          <div class="hc-row-sub">Patparganj, Delhi 110092</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">💬</div>
+        <div>
+          <div class="hc-row-text">WhatsApp Available</div>
+          <div class="hc-row-sub">Quick responses guaranteed</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📘</div>
+        <div>
+          <div class="hc-row-text">facebook.com</div>
+          <div class="hc-row-sub">Follow for updates</div>
+        </div>
+      </div>
+      <div class="hc-divider"></div>
+      <div class="hc-open">
+        <div class="hc-open-dot"></div>
+        <div>
+          <span>Open Now</span>
+          <small>Closes 9 PM daily</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEYWORD STRIP -->
+<div class="kstrip">
+  <div class="ks-item"><span class="n">79</span> RCT mentions</div>
+  <span class="ks-sep">·</span>
+  <div class="ks-item"><span class="n">42</span> Service reviews</div>
+  <span class="ks-sep">·</span>
+  <div class="ks-item"><span class="n">35</span> Dental Care</div>
+  <span class="ks-sep">·</span>
+  <div class="ks-item"><span class="n">32</span> Skilled</div>
+  <span class="ks-sep">·</span>
+  <div class="ks-item"><span class="n">30</span> Wisdom Tooth</div>
+  <span class="ks-sep">·</span>
+  <div class="ks-item"><span class="n">27</span> Dental Treatment</div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="av-chip">Est. · Trusted Since Years</div>
+      <div class="av-main">
+        <div class="big-icon">🦷</div>
+        <h3>Dr. Sultan's Dental<br>& Implant Clinic</h3>
+        <p>"Your Smile Our Pride"</p>
+      </div>
+      <div class="av-float">
+        <div class="af-num">4.9★</div>
+        <div class="af-lbl">618+ Google Reviews</div>
+      </div>
+    </div>
+    <div class="about-body">
+      <div>
+        <div class="slbl">About the Clinic</div>
+        <h2 class="stitle">Specialist Care,<br>Lasting Smiles</h2>
+      </div>
+      <p>Dr. Sultan's Dental & Implant Clinic is a specialist prosthodontist practice at A-88, Upper Ground Floor, Madhu Vihar Market Main Road, I.P. Extension, Patparganj, Delhi 110092 — one of Delhi's highest-rated dental clinics with a 4.9★ score from 618+ real patients.</p>
+      <div class="about-callout">
+        <p>"Handles kids easily — my son had his root canal without much trouble at all."</p>
+        <cite>— Verified patient review on Google</cite>
+      </div>
+      <p>From complex RCT and dental implants to wisdom tooth removal and smile makeovers, our clinic delivers expert care for patients of all ages. Open till 9 PM for maximum convenience — with WhatsApp and Facebook for easy communication.</p>
+      <div class="feature-pills">
+        <div class="fpill">🦷 Prosthodontist</div>
+        <div class="fpill">💬 WhatsApp</div>
+        <div class="fpill">🕘 Open till 9 PM</div>
+        <div class="fpill">📘 Facebook</div>
+        <div class="fpill">👶 Kids Friendly</div>
+        <div class="fpill">📍 Madhu Vihar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="svc-header">
+    <div>
+      <div class="slbl">What We Offer</div>
+      <h2 class="stitle">Complete Dental & Implant Services</h2>
+    </div>
+    <p class="sdesc" style="max-width:280px">From routine care to complex reconstructions — all under one roof.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <span class="svc-hot">79 Reviews</span>
+      <div class="svc-icon-wrap">🔧</div>
+      <h3>Root Canal Treatment</h3>
+      <p>Painless, modern RCT by our specialist. Our most talked-about service with 79+ patient mentions.</p>
+      <span class="svc-tag">→ Most Reviewed</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🦷</div>
+      <h3>Dental Implants</h3>
+      <p>Permanent, natural-looking implants using titanium for complete tooth replacement.</p>
+      <span class="svc-tag">→ Implantology</span>
+    </div>
+    <div class="svc-card">
+      <span class="svc-hot">30 Reviews</span>
+      <div class="svc-icon-wrap">⭐</div>
+      <h3>Wisdom Tooth Removal</h3>
+      <p>Safe extraction of wisdom teeth including complex, impacted cases with minimal discomfort.</p>
+      <span class="svc-tag">→ Oral Surgery</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">💎</div>
+      <h3>Crowns & Bridges</h3>
+      <p>High-quality prosthodontic restorations that look and function like natural teeth.</p>
+      <span class="svc-tag">→ Prosthodontics</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">✨</div>
+      <h3>Smile Makeover</h3>
+      <p>Veneers, whitening, and complete smile design for the radiant smile you deserve.</p>
+      <span class="svc-tag">→ Cosmetic</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🔍</div>
+      <h3>Dental Consultation</h3>
+      <p>Thorough examination and imaging for precise diagnosis and personalised treatment.</p>
+      <span class="svc-tag">→ Preventive</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🧼</div>
+      <h3>Scaling & Cleaning</h3>
+      <p>Professional deep cleaning and tartar removal for lasting oral hygiene.</p>
+      <span class="svc-tag">→ Hygiene</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">📐</div>
+      <h3>Braces & Aligners</h3>
+      <p>Metal, ceramic, and clear aligner options to align teeth and fix bite issues.</p>
+      <span class="svc-tag">→ Orthodontic</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">👶</div>
+      <h3>Paediatric Dentistry</h3>
+      <p>Gentle, kid-friendly dental care. Our doctor is especially praised for handling children.</p>
+      <span class="svc-tag">→ Kids' Dental</span>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="slbl">Patient Reviews</div>
+  <h2 class="stitle">What 618+ Patients Say</h2>
+  <div class="rev-top">
+    <div class="rev-score-box">
+      <div class="rsb-num">4.9</div>
+      <div class="rsb-stars">★★★★★</div>
+      <div class="rsb-count">618 verified Google reviews</div>
+    </div>
+    <div class="rev-chips-area">
+      <h4>Most mentioned topics</h4>
+      <div class="rev-chips">
+        <div class="rchip">RCT <span class="rc-n">79</span></div>
+        <div class="rchip">Service <span class="rc-n">42</span></div>
+        <div class="rchip">Dental Care <span class="rc-n">35</span></div>
+        <div class="rchip">Skilled <span class="rc-n">32</span></div>
+        <div class="rchip">Wisdom Tooth <span class="rc-n">30</span></div>
+        <div class="rchip">Dental Treatment <span class="rc-n">27</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="rev-grid">
+    <div class="rev-card">
+      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text">"Handles kids easily — my son had his root canal without much trouble at all. The doctor was calm, patient and professional throughout."</p>
+      <div class="rc-name">Verified Patient</div>
+      <div class="rc-svc">Root Canal Treatment · Paediatric</div>
+    </div>
+    <div class="rev-card">
+      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text">"Best dental clinic in Madhu Vihar. Extremely skilled doctor, very hygienic, and painless treatment. Highly recommend for anyone!"</p>
+      <div class="rc-name">Priya M.</div>
+      <div class="rc-svc">Dental Care · Scaling</div>
+    </div>
+    <div class="rev-card">
+      <div class="rc-stars">★★★★★</div>
+      <p class="rc-text">"Had my wisdom tooth removed here. Zero pain, explained everything clearly, and the post-procedure care advice was very helpful."</p>
+      <div class="rc-name">Rohit S.</div>
+      <div class="rc-svc">Wisdom Tooth Extraction</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div style="text-align:center">
+    <div class="slbl" style="justify-content:center">Why Choose Us</div>
+    <h2 class="stitle">Delhi's Most Trusted Dental Clinic</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="wc-icon">🏆</div>
+      <h3>4.9★ Rating</h3>
+      <p>618+ verified reviews make us one of Delhi's highest-rated clinics.</p>
+    </div>
+    <div class="why-card">
+      <div class="wc-icon">🦷</div>
+      <h3>Prosthodontist</h3>
+      <p>Specialist expertise in implants, crowns, bridges & full mouth reconstruction.</p>
+    </div>
+    <div class="why-card">
+      <div class="wc-icon">🕘</div>
+      <h3>Open Till 9 PM</h3>
+      <p>Convenient late hours so working professionals can visit without hassle.</p>
+    </div>
+    <div class="why-card">
+      <div class="wc-icon">💬</div>
+      <h3>Easy to Reach</h3>
+      <p>WhatsApp & Facebook for quick queries, appointments, and updates.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div>
+    <div class="slbl">Get In Touch</div>
+    <h2 class="stitle">Book an Appointment</h2>
+    <p class="sdesc">Open daily till 9 PM. WhatsApp us or fill the form — we'll confirm your slot quickly.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="cinfo">
+      <div class="ci-card">
+        <div class="ci-icon">📍</div>
+        <div>
+          <h4>Address</h4>
+          <p>A-88, Upper Ground Floor,<br>Madhu Vihar Market Main Rd,<br>I.P. Extension, Patparganj, Delhi – 110092</p>
+        </div>
+      </div>
+      <div class="ci-card">
+        <div class="ci-icon">📞</div>
+        <div>
+          <h4>Phone & WhatsApp</h4>
+          <a href="tel:08930033">8930033…</a>
+          <a href="#" style="color:var(--mint);font-size:0.83rem;margin-top:0.2rem">💬 Chat on WhatsApp →</a>
+        </div>
+      </div>
+      <div class="ci-card">
+        <div class="ci-icon">🕐</div>
+        <div>
+          <h4>Opening Hours</h4>
+          <p>Open daily · Closes 9 PM</p>
+          <div class="open-pill"><div class="odot"></div> Open Now</div>
+        </div>
+      </div>
+      <div class="ci-card">
+        <div class="ci-icon">📘</div>
+        <div>
+          <h4>Social</h4>
+          <a href="https://facebook.com" target="_blank">📘 Follow on Facebook →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cform">
+      <h3>Request an Appointment</h3>
+      <p class="sub">Fill in your details and we'll get back to you shortly.</p>
+      <div class="fg-row">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="Rahul"></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Sharma"></div>
+      </div>
+      <div class="fg"><label>Phone / WhatsApp</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+      <div class="fg">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service…</option>
+          <option>Root Canal Treatment (RCT)</option>
+          <option>Dental Implants</option>
+          <option>Wisdom Tooth Removal</option>
+          <option>Crowns & Bridges</option>
+          <option>Smile Makeover / Veneers</option>
+          <option>Teeth Whitening</option>
+          <option>Scaling & Cleaning</option>
+          <option>Braces / Aligners</option>
+          <option>Paediatric Dentistry</option>
+          <option>General Consultation</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg"><label>Preferred Time</label><input type="text" placeholder="e.g. Evening, After 5 PM, Weekend…"></div>
+      <div class="fg"><label>Message (Optional)</label><textarea placeholder="Describe your concern or any questions…"></textarea></div>
+      <button class="csub" onclick="alert('Thank you! We will contact you shortly to confirm your appointment.')">Book Appointment →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="foot-logo">
+        <div class="foot-logo-icon">🦷</div>
+        <div class="foot-logo-text">Dr. Sultan's Dental & Implant</div>
+      </div>
+      <p>Your Smile Our Pride — specialist prosthodontist clinic at Madhu Vihar, I.P. Extension, Delhi. Open till 9 PM daily.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Root Canal Treatment</a></li>
+        <li><a href="#services">Dental Implants</a></li>
+        <li><a href="#services">Wisdom Tooth Removal</a></li>
+        <li><a href="#services">Crowns & Bridges</a></li>
+        <li><a href="#services">Smile Makeover</a></li>
+        <li><a href="#services">Kids' Dentistry</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:08930033">8930033…</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+        <li><a href="#contact">Book Appointment</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2024 Dr. Sultan's Dental & Implant Clinic. All rights reserved. · Madhu Vihar, Delhi 110092</p>
+    <div class="foot-tagline">"Your Smile Our Pride"</div>
+  </div>
+</footer>
+
+</body>
+</html>
